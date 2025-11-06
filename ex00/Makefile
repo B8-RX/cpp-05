@@ -9,7 +9,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 HEADERS = Bureaucrat.hpp 
 
-NAME = polymorphism
+NAME = bureaucrat
 
 # DEPS = $(OBJECTS:.o=.d)
 
