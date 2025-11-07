@@ -17,7 +17,7 @@
 int	main(void)
 {
 	std::cout << "\n~~~~~~~~~~~~~~~~~~~~~~~\n";
-	std::cout << "Test good instance (default values)\n";
+	std::cout << "Test good instance (with default values)\n";
 	try {
 		Bureaucrat *unknow = new Bureaucrat();
 		std::cout << *unknow << "\n";	
