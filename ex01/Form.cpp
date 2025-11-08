@@ -53,17 +53,9 @@ int	Form::getGradeToExec() const {
 }
 
 void	Form::beSigned(const Bureaucrat& bureaucrat) {
-		try {
-			if (bureaucrat.getGrade() > _gradeToSign)
-				throw(GradeTooLowException());
-			_isSigned = true;
-			std::cout << bureaucrat.getName() << " signed " << _name << "\n";
-		}
-		catch (const std::exception& e) {
-			std::cout << bureaucrat.getName() << " couldn't sign "
-											  << _name << " because "
-											  << e.what() << ".\n"; 
-		}
+		if (bureaucrat.getGrade() > _gradeToSign)
+			throw(GradeTooLowException());
+		_isSigned = true;
 }
 
 const char*	Form::GradeTooLowException::what() const throw() {

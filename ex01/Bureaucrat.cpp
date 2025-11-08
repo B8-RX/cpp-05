@@ -13,6 +13,7 @@
 #include <exception>
 #include <iostream>
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat() : _name("unnamed"), _grade(150) {}
 
@@ -56,7 +57,14 @@ void	Bureaucrat::decrementGrade(int n) {
 }
 
 void	Bureaucrat::signForm(Form& form) {
-	form.beSigned(*this);
+	try {
+		form.beSigned(*this);
+		std::cout << _name << " signed " << form.getName() << "\n";
+	} catch (std::exception& e) {
+		std::cout << _name << " couldn't sign "
+										  << form.getName() << " because "
+										  << e.what() << ".\n"; 
+	}
 } 
 
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& other) {
