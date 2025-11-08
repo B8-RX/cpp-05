@@ -85,6 +85,6 @@ std::ostream&	operator<<(std::ostream& out, const Form& src) {
 		<< "], is signed [" << (src.getIsSigned() ? "true" : "false")
 		<< "], grade to sign [" << src.getGradeToSign()
 		<< "], grade to execute [" << src.getGradeToExec()
-		<< "].\n";
+		<< "].";
 	return (out);
 }

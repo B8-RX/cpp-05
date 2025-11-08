@@ -138,23 +138,31 @@ int	main(void)
 	try {
 		Bureaucrat soso("toto", 20);
 		Form		projetX("Moon Invasion", 1, 10);
+		std::cout << projetX << "\n";
 		soso.signForm(projetX);
+		std::cout << projetX << "\n";
 	} catch (std::exception& e) {
 		std::cout << e.what() << "\n";
 	}
+	std::cout << "\n";
 	std::cout << "\t[Test: sign with Grade higher than required grade]\n";
 	try {
 		Bureaucrat soso("soso", 5);
 		Form		projetX("Moon Invasion", 21, 10);
+		std::cout << projetX << "\n";
 		soso.signForm(projetX);
+		std::cout << projetX << "\n";
 	} catch (std::exception& e) {
 		std::cout << e.what() << "\n";
 	}
+	std::cout << "\n";
 	std::cout << "\t[Test: sign with Grade equal to required grade]\n";
 	try {
 		Bureaucrat soso("soso", 21);
 		Form		projetX("Moon Invasion", 21, 10);
+		std::cout << projetX << "\n";
 		soso.signForm(projetX);
+		std::cout << projetX << "\n";
 	} catch (std::exception& e) {
 		std::cout << e.what() << "\n";
 	}
