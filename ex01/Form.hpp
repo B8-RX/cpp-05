@@ -15,8 +15,8 @@
 
 #include <string>
 #include <ostream>
-#include "Bureaucrat.hpp"
 
+class	Bureaucrat;
 class	Form {
 	public:
 		Form(void);
@@ -29,8 +29,12 @@ class	Form {
 		bool						getIsSigned(void) const;
 		int							getGradeToSign(void) const;
 		int							getGradeToExec(void) const;
-		void						beSigned(const Bureaucrat&);
+		void						beSigned(const Bureaucrat& b);
 		class						GradeTooLowException : public std::exception {
+			public:
+				virtual const char*	what() const throw();
+		};
+		class						GradeTooHighException : public std::exception {
 			public:
 				virtual const char*	what() const throw();
 		};
