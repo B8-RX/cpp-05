@@ -15,6 +15,7 @@
 
 #include <string>
 #include <ostream>
+#include <exception>
 
 class	Bureaucrat;
 class	Form {
@@ -22,7 +23,7 @@ class	Form {
 		Form(void);
 		~Form(void);
 		Form(const Form& other);
-		Form(const std::string& name, const int _gradeToSign, const int _gradeToExec);
+		Form(const std::string& name, const int gradeToSign, const int gradeToExec);
 
 		Form&						operator=(const Form& other);
 		const std::string&			getName(void) const;

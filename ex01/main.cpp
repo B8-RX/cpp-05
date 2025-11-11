@@ -11,15 +11,19 @@
 /* ************************************************************************** */
 
 #include <exception>
+#include <iomanip>
 #include <iostream>
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
 int	main(void)
 {
-	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~\n";
+	std::string sep(100, '~');
+	
+
+	std::cout << "\n" << sep << "\n";
 	std::cout << "\n";	
-	std::cout << "INSTANCE CREATION\n";
+	std::cout << std::setw(50) << "INSTANCE CREATION\n\n";
 	std::cout << "\t[Test: good instance (no input values, should create bureaucrat with default values)]\n";
 	try {
 		Bureaucrat *unknow = new Bureaucrat();
@@ -53,17 +57,17 @@ int	main(void)
 	} catch (std::exception &e) {
 		std::cout << e.what() << "\n";
 	}
-	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~\n";
+	std::cout << "\n" << sep << "\n";
 
-	std::cout << "\n";	
-	std::cout << "OVERLOADING\n";
+	std::cout << "\n\n";	
+	std::cout << std::setw(50) << "OVERLOADING\n\n";
 	std::cout << "\t[Test: overloading operator (<<) output format: [<name>, bureaucrat grade <grade>.]\n";
 	Bureaucrat soso("soso", 55);
 	std::cout << soso << "\n";	
-	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~\n";
+	std::cout << "\n" << sep << "\n";
 
-	std::cout << "\n";	
-	std::cout << "GRADE DECREMENT\n";
+	std::cout << "\n\n";	
+	std::cout << std::setw(50) << "GRADE DECREMENT\n\n";
 	std::cout << "\t[Test: Invalid decrement (input = grade 55, decrementation = 200)]\n";
 	try {
 		Bureaucrat soso("soso", 55);
@@ -71,6 +75,7 @@ int	main(void)
 	} catch (std::exception & e) {
 		std::cout << e.what() << "\n";
 	}
+	std::cout << "\n";
 	std::cout << "\t[Test: Valid decrement (input = grade 55, decrementation = 5, output = should be 60)]\n";
 	try {
 		Bureaucrat soso("soso", 55);
@@ -80,8 +85,8 @@ int	main(void)
 		std::cout << e.what() << "\n";
 	}
 	
-	std::cout << "\n";
-	std::cout << "GRADE INCREMENT\n";
+	std::cout << "\n\n";
+	std::cout << std::setw(50) << "GRADE INCREMENT\n\n";
 	std::cout << "\t[Test: Invalid increment (input = grade 55, incrementation = 200)]\n";
 	try {
 		Bureaucrat soso("soso", 55);
@@ -89,6 +94,7 @@ int	main(void)
 	} catch (std::exception & e) {
 		std::cout << e.what() << "\n";
 	}
+	std::cout << "\n";
 	std::cout << "\t[Test: Valid increment (input = grade 55, incrementation = 5, output = should be 50)]\n";
 	try {
 		Bureaucrat soso("soso", 55);
@@ -97,44 +103,55 @@ int	main(void)
 	} catch (std::exception & e) {
 		std::cout << e.what() << "\n";
 	}
-	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~\n";
 
-	std::cout << "\n";	
-	std::cout << "FORM TESTS\n";
+	std::cout << "\n" << sep << "\n";
 
-	std::cout << "Trigger Exceptions On Form Creation\n";
-	std::cout << "\t[Test: with grade [to sign] in out-of-bounds range (< 1)]\n";
+	std::cout << "\n\n";	
+	std::cout << std::setw(50) << "FORM TESTS\n\n";
+
+	std::cout << "[Test: Create successfully a Form]\n\n";
+	try {
+		Form		projetX("Moon Invasion", 1, 10);
+		std::cout << projetX << "\n";
+	} catch (std::exception& e) {
+		std::cout << e.what() << "\n";
+	}
+
+	std::cout << "[Test: Trigger Exceptions On Form Creation]\n\n";
+
+	std::cout << "\t<--bureaucrat's grade in out-of-bounds range (< 1) for the field [gradeToSign]-->\n";
 	try {
 		Form		projetX("Moon Invasion", 0, 10);
 	} catch (std::exception& e) {
 		std::cout << e.what() << "\n";
 	}
-	
-	std::cout << "\t[Test: with grade [to execute] in out-of-bounds range (< 1)]\n";
-	try {
-		Form		projetX("Moon Invasion", 10, 0);
-	} catch (std::exception& e) {
-		std::cout << e.what() << "\n";
-	}
-	
-	std::cout << "\t[Test: with grade [to sign] in out-of-bounds range (> 150)]\n";
+		
+	std::cout << "\t<--bureaucrat's grade in out-of-bounds range (> 150) for the field [gradeToSign]-->\n";
 	try {
 		Form		projetX("Moon Invasion", 151, 10);
 	} catch (std::exception& e) {
 		std::cout << e.what() << "\n";
 	}
-	
-	std::cout << "\t[Test: with grade [to execute] in out-of-bounds range (> 150)]\n";
+
+	std::cout << "\t<--bureaucrat's grade in out-of-bounds range (< 1) for the field [gradeToExecute]-->\n";
+	try {
+		Form		projetX("Moon Invasion", 10, 0);
+	} catch (std::exception& e) {
+		std::cout << e.what() << "\n";
+	}
+
+	std::cout << "\t<--bureaucrat's grade in out-of-bounds range (> 150) for the field [gradeToExecute]-->\n";
 	try {
 		Form		projetX("Moon Invasion", 10, 151);
 	} catch (std::exception& e) {
 		std::cout << e.what() << "\n";
 	}
-	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~\n";
+	
+	std::cout << "\n\t\t-------------------------\n";
 
 	std::cout << "\n";	
-	std::cout << "Bureaucrat Attempt To Sign The Form\n";
-	std::cout << "\t[Test: sign with Grade lower than required grade]\n";
+	std::cout << "[Test: Bureaucrat Attempt To Sign The Form]\n\n";
+	std::cout << "\t<--bureaucrat's grade lower than required grade-->\n";
 	try {
 		Bureaucrat soso("toto", 20);
 		Form		projetX("Moon Invasion", 1, 10);
@@ -145,7 +162,7 @@ int	main(void)
 		std::cout << e.what() << "\n";
 	}
 	std::cout << "\n";
-	std::cout << "\t[Test: sign with Grade higher than required grade]\n";
+	std::cout << "\t<--bureaucrat's grade higher than required grade-->\n";
 	try {
 		Bureaucrat soso("soso", 5);
 		Form		projetX("Moon Invasion", 21, 10);
@@ -156,7 +173,7 @@ int	main(void)
 		std::cout << e.what() << "\n";
 	}
 	std::cout << "\n";
-	std::cout << "\t[Test: sign with Grade equal to required grade]\n";
+	std::cout << "\t<--bureaucrat's grade equal to required grade-->\n";
 	try {
 		Bureaucrat soso("soso", 21);
 		Form		projetX("Moon Invasion", 21, 10);
@@ -166,10 +183,10 @@ int	main(void)
 	} catch (std::exception& e) {
 		std::cout << e.what() << "\n";
 	}
-	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~\n";
+	std::cout << "\n" << sep << "\n";
 
 	std::cout << "\n";
-	std::cout << "OVERLOADING\n";
+	std::cout << std::setw(50) << "OVERLOADING\n\n";
 	std::cout << "\t[Test: overloading << to display all the form's information]\n";
 	try {
 		Form		projetX("Moon Invasion", 21, 10);
@@ -177,7 +194,7 @@ int	main(void)
 	} catch (std::exception& e) {
 		std::cout << e.what() << "\n";
 	}
-	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~\n";
+	std::cout << "\n" << sep << "\n";
 	std::cout << "\n";	
 	return (0);
 }

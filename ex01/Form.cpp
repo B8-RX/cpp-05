@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iomanip>
 #include <iostream>
 #include <ostream>
 #include <string>
@@ -53,17 +54,19 @@ int	Form::getGradeToExec() const {
 }
 
 void	Form::beSigned(const Bureaucrat& bureaucrat) {
-		if (bureaucrat.getGrade() > _gradeToSign)
-			throw(GradeTooLowException());
-		_isSigned = true;
+	if (_isSigned)
+		return ;
+	if (bureaucrat.getGrade() > _gradeToSign)
+		throw(GradeTooLowException());
+	_isSigned = true;
 }
 
 const char*	Form::GradeTooLowException::what() const throw() {
-	return ("Grade too low");
+	return ("Form: grade too low");
 }
 
 const char*	Form::GradeTooHighException::what() const throw() {
-	return ("Grade too high");
+	return ("Form: grade too high");
 }
 
 Form&	Form::operator=(const Form& other) {
@@ -73,10 +76,23 @@ Form&	Form::operator=(const Form& other) {
 }
 
 std::ostream&	operator<<(std::ostream& out, const Form& src) {
-	out << "Form [" << src.getName()
-		<< "], is signed [" << (src.getIsSigned() ? "true" : "false")
-		<< "], grade to sign [" << src.getGradeToSign()
-		<< "], grade to execute [" << src.getGradeToExec()
-		<< "].";
+	std::string sep(80, '_');
+		
+	out << "\t\t"
+		<< sep << "\n"
+		<< "\t\t"
+		<< "|" << std::setw(20) << std::left << "Form" 
+		<< "|" << std::setw(15) << "is signed"
+		<< "|" << std::setw(20) << "grade to sign"
+		<< "|" << std::setw(20) <<  "grade to execute" << "|\n"
+		<< "\t\t"
+		<< sep << "\n"
+		<< "\t\t"
+		<< "|" << std::setw(20) << std::right << src.getName()
+		<< "|" << std::setw(15) << (src.getIsSigned() ? "true" : "false")
+		<< "|" << std::setw(20) << src.getGradeToSign()
+		<< "|" << std::setw(20) << src.getGradeToExec() << "|\n"
+		<< "\t\t"
+		<< sep << "\n";
 	return (out);
 }
