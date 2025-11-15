@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <cstddef>
 #include <iomanip>
 #include <iostream>
 #include <ostream>
@@ -54,8 +55,6 @@ int	Form::getGradeToExec() const {
 }
 
 void	Form::beSigned(const Bureaucrat& bureaucrat) {
-	if (_isSigned)
-		return ;
 	if (bureaucrat.getGrade() > _gradeToSign)
 		throw(GradeTooLowException());
 	_isSigned = true;
@@ -75,24 +74,31 @@ Form&	Form::operator=(const Form& other) {
 	return (*this);
 }
 
+std::string	Form::resizeName(const std::string& str, size_t size) const {
+	if (str.length() >= size)
+	{
+		std::string res = str.substr(0, size);
+		res[size - 1] = '.';
+		return (res);
+	}
+	else
+		return (str);
+}
+
 std::ostream&	operator<<(std::ostream& out, const Form& src) {
-	std::string sep(80, '_');
-		
-	out << "\t\t"
+	std::string sep(61, '_');
+	size_t		fieldSize = 15;
+
+	out << sep << "\n"
+		<< "|" << std::setw(fieldSize) << std::left << "FORM" 
+		<< "|" << std::setw(10) << "IS SIGNED"
+		<< "|" << std::setw(fieldSize) << "GRADE TO SIGN"
+		<< "|" << std::setw(fieldSize) <<  "GRADE TO EXECUTE" << "|\n"
 		<< sep << "\n"
-		<< "\t\t"
-		<< "|" << std::setw(20) << std::left << "Form" 
-		<< "|" << std::setw(15) << "is signed"
-		<< "|" << std::setw(20) << "grade to sign"
-		<< "|" << std::setw(20) <<  "grade to execute" << "|\n"
-		<< "\t\t"
-		<< sep << "\n"
-		<< "\t\t"
-		<< "|" << std::setw(20) << std::right << src.getName()
-		<< "|" << std::setw(15) << (src.getIsSigned() ? "true" : "false")
-		<< "|" << std::setw(20) << src.getGradeToSign()
-		<< "|" << std::setw(20) << src.getGradeToExec() << "|\n"
-		<< "\t\t"
+		<< "|" << std::setw(fieldSize) << std::right << src.resizeName(src.getName(), fieldSize)
+		<< "|" << std::setw(10) << (src.getIsSigned() ? "true" : "false")
+		<< "|" << std::setw(fieldSize) << src.getGradeToSign()
+		<< "|" << std::setw(fieldSize + 1) << src.getGradeToExec() << "|\n"
 		<< sep << "\n";
 	return (out);
 }

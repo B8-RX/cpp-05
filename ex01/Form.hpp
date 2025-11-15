@@ -39,6 +39,7 @@ class	Form {
 			public:
 				virtual const char*	what() const throw();
 		};
+		std::string					resizeName(const std::string& str, size_t size) const;		
 	private:
 		const std::string			_name;
 		bool						_isSigned;
