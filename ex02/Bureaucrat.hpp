@@ -40,6 +40,7 @@ class	Bureaucrat {
 			public:
 				virtual const char* what() const throw();
 		};
+	void							executeForm(const AForm& form) const;
 	private:
 		std::string const			_name;
 		int							_grade;

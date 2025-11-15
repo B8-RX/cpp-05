@@ -61,6 +61,8 @@ void	Bureaucrat::decrementGrade(int n) {
 }
 
 void	Bureaucrat::signForm(AForm& form) const {
+	if (form.getIsSigned())
+		return ;
 	try {
 		form.beSigned(*this);
 		std::cout << _name << " signed " << form.getName() << "\n";
@@ -72,6 +74,15 @@ void	Bureaucrat::signForm(AForm& form) const {
 				  << e.what() << ".\n"; 
 	}
 } 
+
+void	Bureaucrat::executeForm(const AForm& form) const {
+	try {
+		form.execute(*this);
+		std::cout << _name << " executed " << form.getName() << "\n";
+	} catch (std::exception& e) {
+		std::cout << e.what() << "\n" << _name << " could not execute " << form.getName() << "\n";	
+	}
+}
 
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& other) {
 	if (this != &other)

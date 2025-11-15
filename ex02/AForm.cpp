@@ -51,8 +51,6 @@ int	AForm::getGradeToExec() const {
 }
 
 void	AForm::beSigned(const Bureaucrat& bureaucrat) {
-	if (_isSigned)
-		return ;
 	if (bureaucrat.getGrade() > _gradeToSign)
 		throw(GradeTooLowException());
 	_isSigned = true;
@@ -100,10 +98,10 @@ std::ostream&	operator<<(std::ostream& out, const AForm& src) {
 	size_t		fieldSize = 15;
 
 	out << sep << "\n"
-		<< "|" << std::setw(fieldSize) << std::left << "Form" 
-		<< "|" << std::setw(10) << "is signed"
-		<< "|" << std::setw(fieldSize) << "grade to sign"
-		<< "|" << std::setw(fieldSize) <<  "grade to execute" << "|\n"
+		<< "|" << std::setw(fieldSize) << std::left << "FORM" 
+		<< "|" << std::setw(10) << "IS SIGNED"
+		<< "|" << std::setw(fieldSize) << "GRADE TO SIGN"
+		<< "|" << std::setw(fieldSize) <<  "GRADE TO EXECUTE" << "|\n"
 		<< sep << "\n"
 		<< "|" << std::setw(fieldSize) << std::right << src.resizeName(src.getName(), fieldSize)
 		<< "|" << std::setw(10) << (src.getIsSigned() ? "true" : "false")
