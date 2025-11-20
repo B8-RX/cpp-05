@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssghioua <ssghioua@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -76,16 +76,10 @@ AForm&	AForm::operator=(const AForm& other) {
 
 void	AForm::execute(const Bureaucrat& executor) const {
 	if (!_isSigned)
-	{
-		executeFail();
 		throw (FormNotSignedException());
-	}
 	if (executor.getGrade() > getGradeToExec())
-	{
-		executeFail();
 		throw (GradeTooLowException());
-	}
-	executeSuccess();
+	executeAction();
 }
 
 std::string	AForm::resizeName(const std::string& str, size_t size) const {

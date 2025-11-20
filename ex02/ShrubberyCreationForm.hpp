@@ -26,8 +26,7 @@ class	ShrubberyCreationForm : public AForm {
 
 		ShrubberyCreationForm(const std::string& target);
 	protected:
-		void					executeSuccess(void) const;
-		void					executeFail(void) const;
+		void					executeAction(void) const;
 	private:
 		std::string				_target;
 };

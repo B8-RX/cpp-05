@@ -15,17 +15,11 @@
 #include "ShrubberyCreationForm.hpp"
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubbery", 145, 137), _target("unNamed") {
-	std::cout << "ShrubberyCreationForm Default constructor called\n";
-}
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubbery", 145, 137), _target("unNamed") {}
 
-ShrubberyCreationForm::~ShrubberyCreationForm() {
-	std::cout << "ShrubberyCreationForm Destructor called\n";
-}
+ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other), _target(other._target) {
-	std::cout << "ShrubberyCreationForm Copy constructor called\n";
-}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other), _target(other._target) {}
 
 ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other) {
 	if (this != &other)
@@ -33,15 +27,12 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationF
 		AForm::operator=(other);
 		_target = other._target;
 	}
-	std::cout << "ShrubberyCreationForm Copy assignment operator called\n";
 	return (*this);
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm("Shrubbery", 145, 137), _target(target) {
-	std::cout << "ShrubberyCreationForm Target constructor called\n";
-}
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm("Shrubbery", 145, 137), _target(target) {}
 
-void	ShrubberyCreationForm::executeSuccess(void) const {
+void	ShrubberyCreationForm::executeAction(void) const {
 	std::string trees = 
 		"         .                    .                        .                    .\n"
 		"          .         ;          .         ;              .         ;          .         ;\n"
@@ -80,5 +71,3 @@ void	ShrubberyCreationForm::executeSuccess(void) const {
 	outfile << trees << "\n";
 	outfile.close();
 }
-
-void	ShrubberyCreationForm::executeFail(void) const {}

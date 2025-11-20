@@ -25,8 +25,7 @@ class	RobotomyRequestForm : public AForm {
 		
 		RobotomyRequestForm(const std::string& target);
 	protected:
-		void					executeSuccess(void) const;
-		void					executeFail(void) const;
+		void					executeAction(void) const;
 	private:
 		std::string				_target;
 	

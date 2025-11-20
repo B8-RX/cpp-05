@@ -11,20 +11,15 @@
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
+#include <cstdlib>
 #include <iostream>
 #include <string>
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45), _target("unNamed") {
-	std::cout << "RobotomyRequestForm Default constructor called\n";
-}
+RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45), _target("unNamed") {}
 
-RobotomyRequestForm::~RobotomyRequestForm() {
-	std::cout << "RobotomyRequestForm Destructor called\n";
-}
+RobotomyRequestForm::~RobotomyRequestForm() {}
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : AForm(other), _target(other._target) {
-	std::cout << "RobotomyRequestForm Copy constructor called\n";
-}
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : AForm(other), _target(other._target) {}
 
 RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& other) {
 	if (this != &other)
@@ -32,18 +27,15 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 		AForm::operator=(other);
 		_target = other._target;
 	}
-	std::cout << "RobotomyRequestForm Copy assignment operator called\n";
 	return (*this);
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm("RobotomyRequestForm", 72, 45), _target(target) {
-	std::cout << "RobotomyRequestForm Target constructor called\n";
-}
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm("RobotomyRequestForm", 72, 45), _target(target) {}
 
-void	RobotomyRequestForm::executeSuccess(void) const {
-	std::cout << "brrrrrrrrrrr brrrrrrrrrrrr brrrrrrrrrrrrrr -------- " << _target << " has been robotomized successfully 50\% of the time.\n";
-}
+void	RobotomyRequestForm::executeAction(void) const {
 
-void	RobotomyRequestForm::executeFail(void) const {
-	std::cout << "Robotomy Failed\n";
+	if (std::rand() % 2)
+		std::cout << "Brrrrrrrrrrrr -------- " << _target << " has been robotomized successfully 50\% of the time.\n";
+	else
+		std::cout << "Robotomy of " << _target << " failed.\n";
 }

@@ -14,7 +14,6 @@
 #include <iomanip>
 #include <iostream>
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 
@@ -128,7 +127,8 @@ int	main(void)
 		std::cout << "\n" << zulu << "\n";
 		zulu.signForm(*projetZ);
 		std::cout << *projetZ << "\n";
-		zulu.executeForm(*projetZ);
+		for (int i = 0; i < 10; i++)
+			zulu.executeForm(*projetZ);
 		delete projetA;
 		delete projetZ;
 	}
