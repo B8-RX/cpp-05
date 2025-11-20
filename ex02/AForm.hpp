@@ -45,7 +45,8 @@ class	AForm {
 		std::string					resizeName(const std::string& str, size_t size) const;		
 		void						execute(const Bureaucrat& executor) const;					
 	protected:
-		virtual void				executeForm(void) const = 0;
+		virtual void				executeSuccess(void) const = 0;
+		virtual void				executeFail(void) const = 0;
 	private:
 		const std::string			_name;
 		bool						_isSigned;

@@ -76,10 +76,16 @@ AForm&	AForm::operator=(const AForm& other) {
 
 void	AForm::execute(const Bureaucrat& executor) const {
 	if (!_isSigned)
+	{
+		executeFail();
 		throw (FormNotSignedException());
+	}
 	if (executor.getGrade() > getGradeToExec())
+	{
+		executeFail();
 		throw (GradeTooLowException());
-	executeForm();
+	}
+	executeSuccess();
 }
 
 std::string	AForm::resizeName(const std::string& str, size_t size) const {
