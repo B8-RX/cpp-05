@@ -14,6 +14,7 @@
 #include <iomanip>
 #include <iostream>
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 
@@ -22,7 +23,7 @@ int	main(void)
 {
 	{
 		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$$ COULD NOT SIGN OR EXEC $$$$$$$$$$$$$$$$$$$$\n\n";
-		// toto and bob can't sign or execute Forms
+		// toto, bob and soso can't sign or execute Forms
 
 		std::cout << "\n\t$$$$$$$$$$$$$$$$$$$$$$$ SHRUBBERY $$$$$$$$$$$$$$$$$$$$\n\n";
 		Bureaucrat toto("toto", 150);
@@ -47,11 +48,23 @@ int	main(void)
 		std::cout << *planX << "\n";
 		bob.executeForm(*planX);
 		delete planX;
+		
+		std::cout << "\n\t$$$$$$$$$$$$$$$$$$$$$$$ PRESIDENTIALPARDONFORM $$$$$$$$$$$$$$$$$$$$\n\n";
+		Bureaucrat soso("soso", 27);
+		std::cout << soso << "\n";
+
+		AForm	*planP = new PresidentialPardonForm("Idir");
+		std::cout << *planP << "\n";
+		soso.executeForm(*planP);
+		soso.signForm(*planP);
+		std::cout << *planP << "\n";
+		soso.executeForm(*planP);
+		delete planP;
 
 	}
 	{
 		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$$ COULD SIGN BUT NOT EXEC $$$$$$$$$$$$$$$$$$$$\n\n";
-		// toto and bob can sign and execute Forms
+		// toto, bob and soso can sign and execute Forms
 
 		std::cout << "\n\t$$$$$$$$$$$$$$$$$$$$$$$ SHRUBBERY $$$$$$$$$$$$$$$$$$$$\n\n";
 		Bureaucrat toto("toto", 140);
@@ -76,10 +89,22 @@ int	main(void)
 		std::cout << *planY << "\n";
 		bob.executeForm(*planY);
 		delete planY;
+		
+		std::cout << "\n\t$$$$$$$$$$$$$$$$$$$$$$$ PRESIDENTIALPARDONFORM $$$$$$$$$$$$$$$$$$$$\n\n";
+		Bureaucrat soso("soso", 6);
+		std::cout << soso << "\n";
+
+		AForm	*planP = new PresidentialPardonForm("Idir");
+		std::cout << *planP << "\n";
+		soso.executeForm(*planP);
+		soso.signForm(*planP);
+		std::cout << *planP << "\n";
+		soso.executeForm(*planP);
+		delete planP;
 	}
 	{
 		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$ COULD SIGN AND EXEC $$$$$$$$$$$$$$$$$$$$\n\n";
-		// toto and bob can sign and execute Forms
+		// toto, bob and soso can sign and execute Forms
 
 		std::cout << "\n\t$$$$$$$$$$$$$$$$$$$$$$$ SHRUBBERY $$$$$$$$$$$$$$$$$$$$\n\n";
 		Bureaucrat toto("toto", 1);
@@ -97,13 +122,25 @@ int	main(void)
 		Bureaucrat bob("bob", 1);
 		std::cout << bob << "\n";
 
-		AForm	*planZ = new RobotomyRequestForm("home_c");
+		AForm	*planZ = new RobotomyRequestForm("Watatsumi");
 		std::cout << *planZ << "\n";
 		bob.executeForm(*planZ);
 		bob.signForm(*planZ);
 		std::cout << *planZ << "\n";
 		bob.executeForm(*planZ);
 		delete planZ;
+		
+		std::cout << "\n\t$$$$$$$$$$$$$$$$$$$$$$$ PRESIDENTIALPARDONFORM $$$$$$$$$$$$$$$$$$$$\n\n";
+		Bureaucrat soso("soso", 1);
+		std::cout << soso << "\n";
+
+		AForm	*planP = new PresidentialPardonForm("Idir");
+		std::cout << *planP << "\n";
+		soso.executeForm(*planP);
+		soso.signForm(*planP);
+		std::cout << *planP << "\n";
+		soso.executeForm(*planP);
+		delete planP;
 	}
 	{
 		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$ AFTER ASSIGNMENT COULD EXEC $$$$$$$$$$$$$$$$$$$$$$$$\n\n";
