@@ -24,6 +24,13 @@ class	Intern {
 		Intern&	operator=(const Intern& other);
 
 		AForm*	makeForm(const std::string& name, const std::string& target) const;
+
+	private:
+		typedef AForm*	(Intern::*t_creator)(const std::string& target) const;
+
+		AForm*			_createShrubbery(const std::string& target) const;
+		AForm*			_createRobotomy(const std::string& target) const;
+		AForm*			_createPresidential(const std::string& target) const;
 };
 
 #endif // !INTERN_HPP

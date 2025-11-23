@@ -26,7 +26,7 @@ int	main(void)
 		Intern	foo;
 		AForm*	form;
 
-		form = foo.makeForm("presidential", "soso");
+		form = foo.makeForm("presidential pardon wesh", "soso");
 		if (form)
 			delete form;
 	}
@@ -48,7 +48,7 @@ int	main(void)
 		Intern	foo;
 		AForm*	form;
 
-		form = foo.makeForm("robotomy", "soso");
+		form = foo.makeForm("robotomy papy", "soso");
 		if (form)
 			delete form;
 	}
@@ -70,7 +70,7 @@ int	main(void)
 		Intern	foo;
 		AForm*	form;
 
-		form = foo.makeForm("shrubbery", "soso");
+		form = foo.makeForm("shrubbery ta vu", "soso");
 		if (form)
 			delete form;
 	}

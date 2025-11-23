@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "Intern.hpp"
+#include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
@@ -31,29 +32,34 @@ Intern& Intern::operator=(const Intern& other) {
 	return (*this);
 }
 
+AForm*	Intern::_createShrubbery(const std::string& target) const {
+	return (new ShrubberyCreationForm(target));
+}
+
+AForm*	Intern::_createRobotomy(const std::string& target) const {
+	return (new RobotomyRequestForm(target));
+}
+
+AForm*	Intern::_createPresidential(const std::string& target) const {
+	return (new PresidentialPardonForm(target));
+}
+
 AForm*	Intern::makeForm(const std::string& name, const std::string& target) const {
 	const std::string	formList[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
-	AForm*				form = NULL;
-	int					i = -1;
+	const t_creator		creatorList[3] = {
+		&Intern::_createShrubbery,
+		&Intern::_createRobotomy,
+		&Intern::_createPresidential
+	};
 	
-	while (++i < 3)
-		if (formList[i].compare(name) == 0)
-			break;
-	switch (i)
+	for(int i = 0; i < 3; i++)
 	{
-		case 0:
-			form = new ShrubberyCreationForm(target);
-		break;
-		case 1:
-			form = new RobotomyRequestForm(target);
-		break;
-		case 2:
-			form = new PresidentialPardonForm(target);
-		break;
-		default:
-			std::cerr << "Intern could not make form. Invalid name: " << name << "\n" ;
-			return (NULL); 
+		if (formList[i].compare(name) == 0)
+		{
+			std::cout << "Intern creates " << name << " form\n";
+			return ((this->*creatorList[i])(target));
+		}
 	}
-	std::cout << "Intern creates " << name << " form\n";
-	return (form);
+	std::cerr << "Intern could not create form. Invalid name: " << name << "\n";
+	return (NULL);
 }
