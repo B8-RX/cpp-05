@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <exception>
-#include <iomanip>
 #include <iostream>
 #include "AForm.hpp"
 #include "Intern.hpp"
@@ -20,18 +18,18 @@
 int	main(void)
 {
 	{
-		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$$$$ COULD NOT CREATE PRESIDENTIAL PARDON FORM $$$$$$$$$$$$$$$$$$$$$$\n\n";
+		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$$$$ SHOULD NOT CREATE PRESIDENTIAL PARDON FORM $$$$$$$$$$$$$$$$$$$$$$\n\n";
 		// Invalid input form name
 		
 		Intern	foo;
 		AForm*	form;
 
-		form = foo.makeForm("presidential pardon wesh", "soso");
+		form = foo.makeForm("wesh wesh presidential pardon", "soso");
 		if (form)
 			delete form;
 	}
 	{
-		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$$$$ COULD CREATE PRESIDENTIAL PARDON FORM $$$$$$$$$$$$$$$$$$$$$$\n\n";
+		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$$$$ SHOULD CREATE PRESIDENTIAL PARDON FORM $$$$$$$$$$$$$$$$$$$$$$\n\n";
 		// Valid input form name
 		
 		Intern	foo;
@@ -42,7 +40,7 @@ int	main(void)
 			delete form;
 	}
 	{
-		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$$$$ COULD NOT CREATE ROBOTOMY REQUEST FORM $$$$$$$$$$$$$$$$$$$$$$\n\n";
+		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$$$$ SHOULD NOT CREATE ROBOTOMY REQUEST FORM $$$$$$$$$$$$$$$$$$$$$$\n\n";
 		// Invalid input form name
 		
 		Intern	foo;
@@ -53,7 +51,7 @@ int	main(void)
 			delete form;
 	}
 	{
-		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$$$$ COULD CREATE ROBOTOMY REQUEST FORM $$$$$$$$$$$$$$$$$$$$$$\n\n";
+		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$$$$ SHOULD CREATE ROBOTOMY REQUEST FORM $$$$$$$$$$$$$$$$$$$$$$\n\n";
 		// Valid input form name
 		
 		Intern	foo;
@@ -64,7 +62,7 @@ int	main(void)
 			delete form;
 	}
 	{
-		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$$$$ COULD NOT CREATE SHRUBBERY CREATION FORM $$$$$$$$$$$$$$$$$$$$$$\n\n";
+		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$$$$ SHOULD NOT CREATE SHRUBBERY CREATION FORM $$$$$$$$$$$$$$$$$$$$$$\n\n";
 		// Invalid input form name
 		
 		Intern	foo;
@@ -75,7 +73,7 @@ int	main(void)
 			delete form;
 	}
 	{
-		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$$$$ COULD CREATE SHRUBBERY CREATION FORM $$$$$$$$$$$$$$$$$$$$$$\n\n";
+		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$$$$ SHOULD CREATE SHRUBBERY CREATION FORM $$$$$$$$$$$$$$$$$$$$$$\n\n";
 		// Valid input form name
 		
 		Intern	foo;
