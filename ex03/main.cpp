@@ -13,7 +13,7 @@
 #include <iostream>
 #include "AForm.hpp"
 #include "Intern.hpp"
-
+#include "Bureaucrat.hpp"
 
 int	main(void)
 {
@@ -22,66 +22,79 @@ int	main(void)
 		// Invalid input form name
 		
 		Intern	foo;
-		AForm*	form;
+		AForm*	formPresidential;
 
-		form = foo.makeForm("wesh wesh presidential pardon", "soso");
-		if (form)
-			delete form;
+		formPresidential = foo.makeForm("wesh wesh presidential pardon", "soso");
+		if (formPresidential)
+			delete formPresidential;
 	}
 	{
 		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$$$$ SHOULD CREATE PRESIDENTIAL PARDON FORM $$$$$$$$$$$$$$$$$$$$$$\n\n";
 		// Valid input form name
 		
-		Intern	foo;
-		AForm*	form;
+		Intern		foo;
+		AForm*		formPresidential;
+		Bureaucrat	baz("baz", 1);
 
-		form = foo.makeForm("presidential pardon", "soso");
-		if (form)
-			delete form;
+		formPresidential = foo.makeForm("presidential pardon", "soso");
+
+		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$$$$ SHOULD EXECUTE PRESIDENTIAL PARDON FORM $$$$$$$$$$$$$$$$$$$$$$\n\n";
+		baz.signForm(*formPresidential);
+		baz.executeForm(*formPresidential);
+		if (formPresidential)
+			delete formPresidential;
 	}
 	{
 		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$$$$ SHOULD NOT CREATE ROBOTOMY REQUEST FORM $$$$$$$$$$$$$$$$$$$$$$\n\n";
 		// Invalid input form name
 		
 		Intern	foo;
-		AForm*	form;
+		AForm*	formRobotomy;
 
-		form = foo.makeForm("robotomy papy", "soso");
-		if (form)
-			delete form;
+		formRobotomy = foo.makeForm("robotomy papy", "soso");
+		if (formRobotomy)
+			delete formRobotomy;
 	}
 	{
 		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$$$$ SHOULD CREATE ROBOTOMY REQUEST FORM $$$$$$$$$$$$$$$$$$$$$$\n\n";
 		// Valid input form name
 		
 		Intern	foo;
-		AForm*	form;
+		AForm*	formRobotomy;
+		Bureaucrat	baz("baz", 1);
 
-		form = foo.makeForm("robotomy request", "soso");
-		if (form)
-			delete form;
+		formRobotomy = foo.makeForm("robotomy request", "soso");
+		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$$$$ SHOULD EXECUTE ROBOTOMY REQUEST FORM $$$$$$$$$$$$$$$$$$$$$$\n\n";
+		baz.signForm(*formRobotomy);
+		baz.executeForm(*formRobotomy);
+		if (formRobotomy)
+			delete formRobotomy;
 	}
 	{
 		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$$$$ SHOULD NOT CREATE SHRUBBERY CREATION FORM $$$$$$$$$$$$$$$$$$$$$$\n\n";
 		// Invalid input form name
 		
 		Intern	foo;
-		AForm*	form;
+		AForm*	formShrubbery;
 
-		form = foo.makeForm("shrubbery ta vu", "soso");
-		if (form)
-			delete form;
+		formShrubbery = foo.makeForm("shrubbery ta vu", "soso");
+		if (formShrubbery)
+			delete formShrubbery;
 	}
 	{
 		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$$$$ SHOULD CREATE SHRUBBERY CREATION FORM $$$$$$$$$$$$$$$$$$$$$$\n\n";
 		// Valid input form name
 		
 		Intern	foo;
-		AForm*	form;
+		AForm*	formShrubbery;
+		Bureaucrat	baz("baz", 1);
 
-		form = foo.makeForm("shrubbery creation", "soso");
-		if (form)
-			delete form;
+		formShrubbery = foo.makeForm("shrubbery creation", "soso");
+		std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$$$$ SHOULD EXECUTE SHRUBBERY CREATION FORM $$$$$$$$$$$$$$$$$$$$$$\n\n";
+		baz.signForm(*formShrubbery);
+		baz.executeForm(*formShrubbery);
+		if (formShrubbery)
+			delete formShrubbery;
 	}
 	std::cout << "\n\n\t$$$$$$$$$$$$$$$$$$$$$$$$$ END $$$$$$$$$$$$$$$$$$$$$$\n\n";
 	return (0);
